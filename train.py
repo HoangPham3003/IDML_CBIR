@@ -100,7 +100,7 @@ LOG_DIR = args.LOG_DIR + '/logs_{}/{}_{}_embedding{}_alpha{}_mrg{}_{}_lr{}_batch
 # wandb.init(project=args.dataset + '_ProxyAnchor', notes=LOG_DIR)
 # wandb.config.update(args)
 
-os.chdir('../data/')
+os.chdir('./DATA/')
 data_root = os.getcwd()
 # Dataset Loader and Sampler
 trn_dataset = dataset.load(
@@ -197,7 +197,7 @@ def mixup(x, y, alpha):
     batch_size = x.size()[0]
     lam = np.random.beta(alpha, alpha)
 
-    index = torch.randperm(batch_size).cuda()
+    index = torch.randperm(batch_size)
 
     mixed_x = lam*x + (1-lam)*x[index,:]
     y_a, y_b = y, y[index]

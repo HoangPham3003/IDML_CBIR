@@ -56,8 +56,8 @@ class Proxy_Anchor(torch.nn.Module):
         #cos = F.linear(l2_norm(X), l2_norm(P))  # Calcluate cosine similarity
         P_one_hot = binarize(T = T, nb_classes = self.nb_classes)
         N_one_hot = 1 - P_one_hot
-        print(P_one_hot)
-        print(N_one_hot)
+        # print(P_one_hot)
+        # print(N_one_hot)
     
         pos_exp = torch.exp(-self.alpha * (cos - self.mrg))
         neg_exp = torch.exp(self.alpha * (cos + self.mrg))
